@@ -21,10 +21,10 @@
 ### 🔹 Dia 1 – 17/07 (Hoje)
 - [x] Finalizar *Requirements Specification*
 - [x] Criar este **Roadmap**
-- [ ] Inicializar repositório (monorepo ou separado)
-- [ ] Estrutura básica do NestJS com Prisma/PostgreSQL
-- [ ] Estrutura básica do React com Vite ou Next.js
-- [ ] Criar repositório GitHub com README inicial
+- [x] Inicializar repositório (monorepo ou separado)
+- [x] Estrutura básica do NestJS com TypeOrm/PostgreSQL
+- [x] Estrutura básica do React com Vite
+- [x] Criar repositório GitHub com README inicial
 
 ---
 
