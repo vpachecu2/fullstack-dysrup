@@ -1,48 +1,72 @@
-📌 Especificação de Requisitos
-🎯 Objetivo
-Desenvolver uma aplicação de Gerenciamento de Projetos, onde o usuário poderá:
 
-Criar e listar projetos
+# 📘 Requirements Specification – Project Management App
 
-Adicionar, listar, marcar como concluídas e excluir tarefas dentro de projetos
+## 🔹 1. Functional and Business Analysis
 
-🧱 Entidades Principais
-1. Projeto (Project)
-Campo	Tipo	Obrigatório	Descrição
-id	UUID	Sim	Identificador único
-name	string	Sim	Nome do projeto
-description	string	Não	Descrição opcional
-startDate	date	Sim	Data de início do projeto
-createdAt	datetime	Sim	Data de criação (auto)
-updatedAt	datetime	Sim	Data de atualização (auto)
+O sistema permitirá a criação e o gerenciamento de projetos e tarefas, voltado para facilitar a organização e acompanhamento de entregas. Cada projeto terá múltiplas tarefas com status de execução, podendo ser visualizadas, concluídas ou removidas.
 
-2. Tarefa (Task)
-Campo	Tipo	Obrigatório	Descrição
-id	UUID	Sim	Identificador único
-projectId	UUID	Sim	Referência ao projeto (chave estrangeira)
-title	string	Sim	Título da tarefa
-description	string	Não	Descrição opcional
-dueDate	date	Sim	Data de conclusão prevista
-done	boolean	Sim	Se a tarefa está concluída ou não
-createdAt	datetime	Sim	Data de criação (auto)
-updatedAt	datetime	Sim	Data de atualização (auto)
+## 🔹 2. Business Rules (BR)
 
-🔄 Regras de Negócio
-Um Projeto pode conter múltiplas tarefas.
+### BR_001 – O nome do projeto é obrigatório e único por usuário  
+### BR_002 – A data de conclusão da tarefa deve ser igual ou posterior à data de início do projeto  
+### BR_003 – Uma tarefa só pode ser marcada como concluída se estiver associada a um projeto  
+### BR_004 – A exclusão de uma tarefa não pode afetar o projeto ao qual ela pertence
 
-Uma Tarefa sempre pertence a um projeto.
+## 🔹 3. Functional Requirements (FR)
 
-Uma tarefa pode ser marcada como concluída (sem deletar).
+| Código  | Nome                         | Descrição                                                                 |
+|---------|------------------------------|---------------------------------------------------------------------------|
+| FR_001  | Criar Projeto                | Permitir que o usuário crie projetos com nome, descrição e data de início |
+| FR_002  | Listar Projetos              | Exibir todos os projetos existentes                                       |
+| FR_003  | Adicionar Tarefa             | Adicionar tarefas a um projeto existente                                  |
+| FR_004  | Listar Tarefas de um Projeto | Listar todas as tarefas de um projeto                                     |
+| FR_005  | Marcar Tarefa como Concluída | Alterar o status da tarefa para “concluída”                               |
+| FR_006  | Excluir Tarefa               | Remover uma tarefa de um projeto                                          |
 
-O usuário pode excluir tarefas, mas não projetos (exceto se decidir adicionar essa funcionalidade).
+## 🔹 4. Non-Functional Requirements (NFR)
 
-Datas devem ser validadas (ex: data de conclusão de tarefa não pode ser anterior à data de início do projeto).
+| Código   | Requisito                                              |
+|----------|--------------------------------------------------------|
+| NFR_001  | A API deve seguir os padrões RESTful                  |
+| NFR_002  | A resposta da API deve ocorrer em até 500ms           |
+| NFR_003  | O frontend deve ser responsivo                        |
+| NFR_004  | A comunicação entre frontend e backend deve usar HTTPS |
 
-🧪 Funcionalidades Essenciais
-Recurso	Método HTTP	Endpoint	Descrição
-Criar projeto	POST	/projects	Cria um novo projeto
-Listar todos os projetos	GET	/projects	Retorna todos os projetos
-Adicionar tarefa a um projeto	POST	/projects/:id/tasks	Cria uma tarefa vinculada a um projeto
-Listar tarefas de um projeto	GET	/projects/:id/tasks	Lista todas as tarefas de um projeto
-Marcar tarefa como concluída	PATCH	/tasks/:id/complete	Atualiza o status done = true
-Excluir tarefa	DELETE	/tasks/:id	Remove uma tarefa
+## 🔹 5. Use Cases (UC)
+
+### UC_001 – Criar Projeto
+**Ator**: Usuário  
+**Fluxo Principal**:
+1. Usuário preenche nome, descrição e data de início
+2. Clica em “Criar”
+3. Projeto é salvo no banco
+
+### UC_002 – Adicionar Tarefa
+**Fluxo Principal**:
+1. Usuário acessa um projeto existente
+2. Preenche título, descrição e data de conclusão
+3. Clica em “Adicionar Tarefa”
+4. Tarefa é adicionada ao projeto
+
+(Outros UCs seguem o mesmo padrão)
+
+## 🔹 6. Test Cases (TC)
+
+| Código   | Objetivo                    | Cenário                                      | Resultado Esperado              |
+|----------|-----------------------------|----------------------------------------------|---------------------------------|
+| TC_001   | Criar projeto com dados válidos | Nome, descrição e data preenchidos           | Projeto criado com sucesso      |
+| TC_002   | Adicionar tarefa            | Título, descrição e data de conclusão válidos| Tarefa adicionada               |
+| TC_003   | Marcar tarefa como concluída | Clicar em botão de conclusão                 | Status `done = true`            |
+| TC_004   | Excluir tarefa              | Clicar no ícone de deletar                   | Tarefa removida da lista        |
+
+## 🔹 7. Risks and Potential Bugs
+
+- RISK_001 – Data inconsistente entre tarefas e projetos (ex: tarefas com datas inválidas)
+- BUG_001 – Projeto salvo sem nome (validação mal feita)
+- BUG_002 – Status de tarefa não atualiza no frontend após marcação como concluída
+
+## 🔹 8. Improvement Suggestions
+
+- SM_001 – Adicionar campo de prioridade nas tarefas  
+- SM_002 – Permitir ordenação de tarefas por status ou data  
+- SM_003 – Adicionar filtro de busca por nome de projeto/tarefa
