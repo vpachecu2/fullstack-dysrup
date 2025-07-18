@@ -1,9 +1,12 @@
 # Nestjs specific
 /apps/backend/dist
 /apps/backend/node_modules
+
+.DS_Store
+
 /apps/backend/build
 /apps/backend/tmp
-
+/apps/backend/coverage
 
 # Logs
 logs

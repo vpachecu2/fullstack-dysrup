@@ -5,7 +5,7 @@ import {
   Patch,
   Put
 } from '@nestjs/common';
-import { TaskService } from './task.service';
+import { TaskService } from './services/task.service';
 
 @Controller('task')
 export class TaskController {
