@@ -29,10 +29,10 @@
 ---
 
 ### 🔹 Dia 2 – 18/07 (Sexta)
-- [ ] Models: `Project` e `Task`
-- [ ] Endpoints RESTful
-- [ ] DTOs e validações
-- [ ] Relacionamentos com TypeOrm
+- [x] Entidades: `Project` e `Task`
+- [x] Endpoints RESTful
+- [x] DTOs e validações
+- [x] Relacionamentos com TypeOrm
 - [ ] Testes unitários (Jest)
 - [ ] Migration e seed inicial
 
@@ -81,14 +81,14 @@
 - [x] Sugestões de melhoria
 
 ### 🛠 Backend
-- [ ] Setup NestJS com Prisma
-- [ ] Entidades `Project` e `Task`
-- [ ] DTOs e validações
-- [ ] CRUD completo
+- [x] Setup NestJS com TypeOrm
+- [x] Entidades `Project` e `Task`
+- [x] DTOs e validações
+- [x] CRUD completo
 - [ ] Testes com Jest
 
 ### 💻 Frontend
-- [ ] Setup React/Vite
+- [x] Setup React/Vite
 - [ ] Listagem de projetos
 - [ ] Cadastro de projeto
 - [ ] Listagem de tarefas

@@ -1,14 +1,23 @@
-import { Controller, Delete, Param, Patch } from '@nestjs/common';
+import {
+  Controller,
+  Param,
+  ParseUUIDPipe,
+  Patch,
+  Put
+} from '@nestjs/common';
+import { TaskService } from './task.service';
 
 @Controller('task')
 export class TaskController {
-  @Patch(':taskId')
-  markTaskAsDone(@Param('taskId') taskId: string) {
-    return { message: `Task ${taskId} marked as done` };
+  constructor(private readonly taskService: TaskService) { }
+
+  @Patch(':id')
+  markDone(@Param('id', ParseUUIDPipe) id: string) {
+    return this.taskService.markAsDone(id);
   }
 
-  @Delete(':taskId')
-  deleteTask(@Param('taskId') taskId: string) {
-    return { message: `Task ${taskId} deleted` };
+  @Put(':id/delete')
+  softDelete(@Param('id', ParseUUIDPipe) id: string) {
+    return this.taskService.softDelete(id);
   }
 }

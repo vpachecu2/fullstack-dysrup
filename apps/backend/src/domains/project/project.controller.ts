@@ -1,26 +1,39 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseUUIDPipe,
+  Post,
+} from '@nestjs/common';
 import { CreateTaskDto } from '../task/dto/create-task.dto';
 import { CreateProjectDto } from './dto/create-project.dto';
+import { ProjectService } from './project.service';
 
 @Controller('project')
 export class ProjectController {
+  constructor(private readonly projectService: ProjectService) { }
+
   @Post()
-  createProject(@Body() createProjectDto: CreateProjectDto) {
-    return { message: 'Project created', payload: createProjectDto };
+  createProject(@Body() dto: CreateProjectDto) {
+    return this.projectService.create(dto);
   }
 
   @Get()
-  getAllProjects() {
-    return { message: 'List all projects' };
+  findAllProjects() {
+    return this.projectService.findAll();
   }
 
   @Post(':projectId/tasks')
-  addTaskToProject(@Param('projectId') projectId: string, @Body() createTaskDto: CreateTaskDto) {
-    return { message: `Task added to project ${projectId}`, payload: createTaskDto };
+  addTask(
+    @Param('projectId', ParseUUIDPipe) projectId: string,
+    @Body() dto: CreateTaskDto,
+  ) {
+    return this.projectService.addTaskToProject(projectId, dto);
   }
 
   @Get(':projectId/tasks')
-  getTasksFromProject(@Param('projectId') projectId: string) {
-    return { message: `Tasks for project ${projectId}` };
+  getTasks(@Param('projectId', ParseUUIDPipe) projectId: string) {
+    return this.projectService.getTasksFromProject(projectId);
   }
 }
