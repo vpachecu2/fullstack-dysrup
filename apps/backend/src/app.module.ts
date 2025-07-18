@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { Project } from './domains/project/project.entity';
+import { Task } from './domains/task/task.entity';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
 dotenv.config();
@@ -19,6 +21,8 @@ dotenv.config();
       synchronize: true,
       autoLoadEntities: true,
     }),
+    TypeOrmModule.forFeature([Project, Task]),
+
   ],
   controllers: [AppController],
   providers: [AppService],
