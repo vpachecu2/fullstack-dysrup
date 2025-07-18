@@ -14,7 +14,9 @@ const dotenv = require("dotenv");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const project_entity_1 = require("./domains/project/project.entity");
+const project_module_1 = require("./domains/project/project.module");
 const task_entity_1 = require("./domains/task/task.entity");
+const task_module_1 = require("./domains/task/task.module");
 dotenv.config();
 let AppModule = class AppModule {
 };
@@ -32,6 +34,8 @@ exports.AppModule = AppModule = __decorate([
                 autoLoadEntities: true,
             }),
             typeorm_1.TypeOrmModule.forFeature([project_entity_1.Project, task_entity_1.Task]),
+            project_module_1.ProjectModule,
+            task_module_1.TaskModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

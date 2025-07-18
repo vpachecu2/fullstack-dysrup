@@ -5,8 +5,9 @@ import * as dotenv from 'dotenv';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Project } from './domains/project/project.entity';
+import { ProjectModule } from './domains/project/project.module';
 import { Task } from './domains/task/task.entity';
-
+import { TaskModule } from './domains/task/task.module';
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
 dotenv.config();
 
@@ -22,6 +23,8 @@ dotenv.config();
       autoLoadEntities: true,
     }),
     TypeOrmModule.forFeature([Project, Task]),
+    ProjectModule,
+    TaskModule
 
   ],
   controllers: [AppController],

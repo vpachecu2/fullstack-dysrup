@@ -18,7 +18,7 @@
 
 ## 🧩 Detalhamento das Atividades
 
-### 🔹 Dia 1 – 17/07 (Hoje)
+### 🔹 Dia 1 – 17/07 (Quinta)
 - [x] Finalizar *Requirements Specification*
 - [x] Criar este **Roadmap**
 - [x] Inicializar repositório (monorepo ou separado)
@@ -28,17 +28,17 @@
 
 ---
 
-### 🔹 Dia 2 – 18/07 (Quinta)
+### 🔹 Dia 2 – 18/07 (Sexta)
 - [ ] Models: `Project` e `Task`
 - [ ] Endpoints RESTful
 - [ ] DTOs e validações
-- [ ] Relacionamentos com Prisma
+- [ ] Relacionamentos com TypeOrm
 - [ ] Testes unitários (Jest)
 - [ ] Migration e seed inicial
 
 ---
 
-### 🔹 Dia 3 – 19/07 (Sexta)
+### 🔹 Dia 3 – 19/07 (Sabado)
 - [ ] Página de listagem de projetos
 - [ ] Formulário para criar projeto
 - [ ] Listagem de tarefas por projeto
@@ -49,7 +49,7 @@
 
 ---
 
-### 🔹 Dia 4 – 20/07 (Sábado - Entrega)
+### 🔹 Dia 4 – 20/07 (Domingo - Entrega)
 - [ ] Deploy do backend (Render/Railway)
 - [ ] Deploy do frontend (Vercel/Netlify)
 - [ ] Ajustes de CORS e variáveis `.env`
