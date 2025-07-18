@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Project } from '../project/project.entity';
 
 @Entity()
@@ -20,4 +20,7 @@ export class Task {
 
   @ManyToOne(() => Project, (project) => project.tasks, { onDelete: 'CASCADE' })
   project: Project;
+
+  @DeleteDateColumn({ type: 'date' })
+  deletedAt: string;
 }
