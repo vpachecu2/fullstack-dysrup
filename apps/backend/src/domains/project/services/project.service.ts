@@ -1,17 +1,17 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateTaskDto } from '../task/dto/create-task.dto';
-import { Task } from '../task/task.entity';
-import { TaskRepository } from '../task/task.repository';
-import { CreateProjectDto } from './dto/create-project.dto';
-import { Project } from './project.entity';
-import { ProjectsRepository } from './project.repository';
+import { CreateTaskDto } from '../../task/dto/create-task.dto';
+import { Task } from '../../task/task.entity';
+import { TaskRepository } from '../../task/task.repository';
+import { CreateProjectDto } from '../dto/create-project.dto';
+import { Project } from '../project.entity';
+import { ProjectRepository } from '../project.repository';
 
 @Injectable()
 export class ProjectService {
   constructor(
     @InjectRepository(Project)
-    private readonly projectRepository: ProjectsRepository,
+    private readonly projectRepository: ProjectRepository,
 
     @InjectRepository(Task)
     private readonly taskRepository: TaskRepository,

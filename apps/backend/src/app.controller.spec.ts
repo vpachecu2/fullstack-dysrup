@@ -16,7 +16,7 @@ describe('AppController', () => {
 
   describe('root', () => {
     it('should return "Backend is running on port 3000!"', () => {
-      expect(appController.healthCheck()).toBe('Backend is running on port 3000');
+      expect(appController.healthCheck()).toBe('Backend is running on port 3000!');
     });
   });
 });

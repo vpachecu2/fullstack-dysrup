@@ -33,7 +33,7 @@
 - [x] Endpoints RESTful
 - [x] DTOs e validações
 - [x] Relacionamentos com TypeOrm
-- [ ] Testes unitários (Jest)
+- [x] Testes unitários (Jest)
 - [ ] Migration e seed inicial
 
 ---
@@ -85,7 +85,7 @@
 - [x] Entidades `Project` e `Task`
 - [x] DTOs e validações
 - [x] CRUD completo
-- [ ] Testes com Jest
+- [x] Testes com Jest
 
 ### 💻 Frontend
 - [x] Setup React/Vite
